@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <CardsContainer />
+    <NewCard />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import CardsContainer from "../components/CardsContainer";
+import NewCard from "../components/NewCardContainer";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    NewCard,
+    CardsContainer
   }
 };
 </script>
+
+<style scoped lang="scss">
+h4.card-title {
+  color: $second_blue;
+}
+</style>

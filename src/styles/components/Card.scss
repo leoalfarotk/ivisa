@@ -1,0 +1,14 @@
+.card-container {
+  background-color: $gray;
+  color: $dark_gray;
+}
+
+.remove-card-button {
+  color: #d3d3d5;
+  border-color: #d3d3d5;
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  padding-left: 20px;
+  padding-right: 20px;
+}
