@@ -108,7 +108,7 @@ export default {
     canSubmit() {
       return (
         this.name_on_card.length &&
-        this.card_number.length === 16 &&
+        this.card_number.length &&
         this.exp_month.length &&
         this.exp_year.length &&
         this.security_code.length === 3

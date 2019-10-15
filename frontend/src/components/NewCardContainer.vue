@@ -7,22 +7,22 @@
     <hr v-if="show_form" />
 
     <b-card-text v-show="show_form">
-      <b-row class="justify-content-md-center">
-        <b-col>
+      <b-row class="justify-content-center">
+        <b-col cols="2" md="1">
           <img
             src="../assets/images/Ok green ico.svg"
             alt="New Card Green Checkbox Icon"
             id="new_card_check_mark"
           />
         </b-col>
-        <b-col>
+        <b-col cols="6" md="2">
           <span id="accepted_cards_text">
             We Accept All Major
             <br />
             Debit / Credit Cards
           </span>
         </b-col>
-        <b-col>
+        <b-col cols="12" md="9">
           <img src="../assets/images/Payment-methods.jpg" />
         </b-col>
       </b-row>
@@ -63,6 +63,7 @@ h4.card-title {
 }
 
 #accepted_cards_text {
+    font-family: Arial;
   color: $green;
 }
 </style>

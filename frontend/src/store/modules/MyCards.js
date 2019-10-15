@@ -49,36 +49,6 @@ const MyCards = {
       this._vm.$axios.get("cards").then(response => {
         context.commit("setCards", response.data.cards);
       });
-
-      // Static data for now
-      /*let cards = [
-        {
-          id: 1,
-          provider_id: context.rootState.AMERICAN_EXPRESS,
-          number: "**** **** 9786",
-          exp_month: 1,
-          exp_year: 2024,
-          is_default: true
-        },
-        {
-          id: 2,
-          provider_id: context.rootState.VISA,
-          number: "**** **** 4950",
-          exp_month: 11,
-          exp_year: 2022,
-          is_default: false
-        },
-        {
-          id: 3,
-          provider_id: context.rootState.VISA,
-          number: "**** **** 4567",
-          exp_month: 7,
-          exp_year: 2023,
-          is_default: false
-        }
-      ];
-
-      context.commit("setCards", cards);*/
     },
     saveNewCard(context, new_card_object) {
       this._vm.$axios.post("save", new_card_object).then(response => {
@@ -89,17 +59,28 @@ const MyCards = {
       });
     },
     setSelectedAsDefault(context) {
-      // POST request
-      // if successful
-      context.commit("setNewDefault", context.state.selected_card_id);
-      context.commit("clearSelectedCard");
+      this._vm.$axios
+        .post("set-default", {
+          card_id: context.state.selected_card_id
+        })
+        .then(response => {
+          if (response.data.success === true) {
+            context.commit("setNewDefault", context.state.selected_card_id);
+            context.commit("clearSelectedCard");
+          }
+        });
     },
     deleteSelectedCard(context) {
-      // POST request to delete card from the database
-
-      // if request is successful
-      context.commit("removeCardById", context.state.selected_card_id);
-      context.commit("clearSelectedCard");
+      this._vm.$axios
+        .post("delete", {
+          card_id: context.state.selected_card_id
+        })
+        .then(response => {
+          if (response.data.success === true) {
+            context.commit("removeCardById", context.state.selected_card_id);
+            context.commit("clearSelectedCard");
+          }
+        });
     }
   }
 };
