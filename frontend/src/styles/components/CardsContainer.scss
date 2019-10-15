@@ -16,8 +16,21 @@ h4.card-title {
   }
 }
 
+.nav-item {
+  .nav-link {
+    border-style: solid;
+    border-color: #dee2e6 #dee2e6 #fff !important;
+  }
+}
+
+@media (min-width: 576px) {
+  li.nav-item {
+    width: 240px;
+  }
+}
+
 li.nav-item {
-  width: 240px;
+  min-width: 80px;
   text-align: center;
 }
 
@@ -108,7 +121,7 @@ footer .btn {
           width: calc(100% - 18px);
 
           &.active {
-            border-top: 2px solid #52d03e;
+            border-top: 2px solid #52d03e !important;
           }
         }
       }

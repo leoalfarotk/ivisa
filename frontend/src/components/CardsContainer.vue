@@ -29,7 +29,7 @@
             class="navbar-icon"
             alt="My Cards"
           />
-          <span class="desktop-only"> MY CARDS </span>>
+          <span class="desktop-only"> MY CARDS </span>
         </b-nav-item>
         <b-nav-item disabled>
           <img
@@ -37,7 +37,7 @@
             class="navbar-icon"
             alt="My Account"
           />
-          <span class="desktop-only"> MY ACCOUNT </span>>
+          <span class="desktop-only"> MY ACCOUNT </span>
         </b-nav-item>
       </b-nav>
     </template>
@@ -51,7 +51,7 @@
         :number="card.number"
         :exp_month="card.exp_month"
         :exp_year="card.exp_year"
-        :is_default="card.is_default"
+        :is_default="!!card.is_default"
       />
 
       <div v-if="myCards.length === 0" style="text-align: center;">

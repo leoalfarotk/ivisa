@@ -68,7 +68,11 @@
           alt="Secured By SECTIGO"
         />
 
-        <b-button variant="primary" @click.prevent="saveNewCard" :disabled="!canSubmit">
+        <b-button
+          variant="primary"
+          @click.prevent="saveNewCard"
+          :disabled="!canSubmit"
+        >
           Add Card
         </b-button>
       </div>
@@ -102,15 +106,25 @@ export default {
       };
 
       this.$store.dispatch("myCards/saveNewCard", new_card);
+
+      this.name_on_card = "";
+      this.card_number = null;
+      this.exp_month = null;
+      this.exp_year = null;
+      this.security_code = null;
     }
   },
   computed: {
     canSubmit() {
       return (
         this.name_on_card.length &&
+        this.card_number !== null &&
         this.card_number.length &&
+        this.exp_month !== null &&
         this.exp_month.length &&
+        this.exp_year !== null &&
         this.exp_year.length &&
+        this.security_code !== null &&
         this.security_code.length === 3
       );
     }
