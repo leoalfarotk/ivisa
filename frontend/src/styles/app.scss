@@ -1,0 +1,66 @@
+@import "base_colors.scss";
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/src/assets/fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Open Sans-Bold';
+  src: url("/src/assets/fonts/Open_Sans/OpenSans-Bold.ttf") format("truetype");
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: $dark_gray;
+}
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper-new-card {
+  margin-bottom: 30px;
+  margin-top: 62px;
+}
+
+.wrapper-father {
+
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+
+    .card-title,
+    .card-text {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+  }
+}
+
+.wrapper-btns {
+
+  img {
+    width: 10%;
+  }
+}
