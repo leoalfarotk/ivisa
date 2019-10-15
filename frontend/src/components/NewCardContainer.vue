@@ -37,6 +37,7 @@
 
 <script>
 import NewCardForm from "./NewCardForm";
+
 export default {
   name: "NewCardContainer",
   components: { NewCardForm },
@@ -63,7 +64,7 @@ h4.card-title {
 }
 
 #accepted_cards_text {
-    font-family: Arial;
+  font-family: Arial, sans-serif;
   color: $green;
 }
 </style>
