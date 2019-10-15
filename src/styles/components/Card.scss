@@ -4,11 +4,44 @@
 }
 
 .remove-card-button {
-  color: #d3d3d5;
-  border-color: #d3d3d5;
+  color: #6c757d;
+  border-color: #6c757d;
   border-width: 3px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0);
   padding-left: 20px;
   padding-right: 20px;
+  opacity: 0.2;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.default-text {
+  color: $default_text_color;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.set-default-text {
+  color: $default_text_color;
+  opacity: 0.8;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.default-checkbox {
+  max-width: 18px;
+}
+
+.not-default-checkbox {
+  max-width: 18px;
+  opacity: 0.3;
+}
+
+@media (max-width: 575.98px) {
+  .btn-link {
+    margin-left: -12px;
+  }
 }

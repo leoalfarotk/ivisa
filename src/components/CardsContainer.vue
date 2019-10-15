@@ -1,12 +1,40 @@
 <template>
-  <b-card title="My Cards" align="left" class="mb-4">
+  <b-card title="My Cards" align="left" class="mb-4" id="cards-container">
     <hr />
     <template v-slot:header>
-      <b-nav card-header tabs>
-        <b-nav-item disabled>MY APPLICATIONS</b-nav-item>
-        <b-nav-item disabled>MY TRAVELERS</b-nav-item>
-        <b-nav-item active>MY CARDS</b-nav-item>
-        <b-nav-item disabled>MY ACCOUNT</b-nav-item>
+      <b-nav card-header tabs align="center">
+        <b-nav-item disabled>
+          <img
+            src="../assets/images/My applications ico.svg"
+            class="navbar-icon"
+            alt="My Applications"
+          />
+          MY APPLICATIONS
+        </b-nav-item>
+        <b-nav-item disabled>
+          <img
+            src="../assets/images/My travelers ico.svg"
+            class="navbar-icon"
+            alt="My Travelers"
+          />
+          MY TRAVELERS
+        </b-nav-item>
+        <b-nav-item active>
+          <img
+            src="../assets/images/My cards ico.svg"
+            class="navbar-icon"
+            alt="My Cards"
+          />
+          MY CARDS
+        </b-nav-item>
+        <b-nav-item disabled>
+          <img
+            src="../assets/images/My Account ico.svg"
+            class="navbar-icon"
+            alt="My Account"
+          />
+          MY ACCOUNT
+        </b-nav-item>
       </b-nav>
     </template>
 
@@ -17,27 +45,83 @@
         :card_id="card.id"
         :provider="card.provider_id"
         :number="card.number"
-        :expiration_date="card.expiration_date"
+        :exp_month="card.exp_month"
+        :exp_year="card.exp_year"
         :is_default="card.is_default"
       />
     </b-card-text>
 
     <b-modal
+      ok-title="Yes"
       id="set-default-modal"
       @ok="confirmAsDefault"
       @cancel="clearSelected"
-      title="BootstrapVue"
     >
-      <p class="my-4">Hello from modal!</p>
+      <template v-slot:modal-header-close class="close">
+        ×
+      </template>
+      <template v-slot:modal-title>
+        <img
+          src="../assets/images/Default card ico.svg"
+          alt="Default Card Icon"
+          class="modal-icon"
+        />
+
+        <br />
+
+        <div class="custom-modal-title">
+          Change default card
+        </div>
+      </template>
+      <p class="my-4">
+        This card will appear as a primary option for your payment. Are you sure
+        you want to set this card as default?
+      </p>
+
+      <template v-slot:modal-footer="{ ok, cancel, hide }">
+        <b-button variant="success" @click="ok()">
+          Yes
+        </b-button>
+        <b-button variant="secondary" @click="cancel()">
+          Cancel
+        </b-button>
+      </template>
     </b-modal>
 
     <b-modal
+      ok-title="Yes"
       id="remove-modal"
       @ok="confirmForRemoval"
       @cancel="clearSelected"
-      title="BootstrapVue"
     >
-      <p class="my-4">Hello from modal!</p>
+      <template v-slot:modal-header-close class="close">
+        ×
+      </template>
+      <template v-slot:modal-title>
+        <img
+          src="../assets/images/Remove payment ico.svg"
+          alt="Default Card Icon"
+          class="modal-icon"
+        />
+
+        <br />
+
+        <div class="custom-modal-title">
+          Remove card
+        </div>
+      </template>
+      <p class="my-4">
+        Are you sure you want to remove from wallet?
+      </p>
+
+      <template v-slot:modal-footer="{ ok, cancel, hide }">
+        <b-button variant="success" @click="ok()">
+          Yes
+        </b-button>
+        <b-button variant="secondary" @click="cancel()">
+          Cancel
+        </b-button>
+      </template>
     </b-modal>
   </b-card>
 </template>
@@ -69,8 +153,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-h4.card-title {
-  color: $second_blue;
-}
+<style lang="scss">
+@import "../styles/components/CardsContainer.scss";
 </style>

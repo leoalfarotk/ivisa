@@ -52,21 +52,24 @@ const MyCards = {
           id: 1,
           provider_id: context.rootState.AMERICAN_EXPRESS,
           number: "**** **** 9786",
-          expiration_date: new Date(),
+          exp_month: 1,
+          exp_year: 2024,
           is_default: true
         },
         {
           id: 2,
           provider_id: context.rootState.VISA,
           number: "**** **** 4950",
-          expiration_date: new Date(),
+          exp_month: 11,
+          exp_year: 2022,
           is_default: false
         },
         {
           id: 3,
           provider_id: context.rootState.VISA,
           number: "**** **** 4567",
-          expiration_date: new Date(),
+          exp_month: 7,
+          exp_year: 2023,
           is_default: false
         }
       ];

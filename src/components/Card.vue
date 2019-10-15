@@ -1,45 +1,90 @@
 <template>
-  <b-card tag="article" class="card-container mb-2" img-src="">
+  <b-card tag="article" class="card-container mb-2">
     <b-card-text>
       <b-row>
-        <b-col sm="2" xs="1">
-          <b-checkbox
-            :disabled="true"
-            :checked="is_default"
-            class="default-card-checkbox"
-          ></b-checkbox>
+        <b-col sm="1" cols="2" class="vertical-center">
+          <img
+            src="../assets/images/Ok green ico.svg"
+            v-if="is_default"
+            class="default-checkbox"
+          />
+          <img
+            src="../assets/images/Ok grey ico.svg"
+            v-else
+            class="not-default-checkbox"
+          />
         </b-col>
-        <b-col sm="10 xs=11">
+        <b-col sm="11" cols="10">
           <b-row>
-            <b-col order="1" order-md="1">
+            <b-col
+              id="card-image"
+              order="1"
+              order-md="1"
+              cols="5"
+              sm="2"
+              lg="2"
+              class="vertical-center"
+            >
               <CardImage :provider="provider" />
             </b-col>
-            <b-col order="3" order-md="2" xs="12">
-              <span v-if="provider === this.$store.state.VISA">
-                Visa
-              </span>
-              <span v-else-if="provider === this.$store.state.MASTER_CARD">
-                Master Card
-              </span>
-              <span v-else-if="provider === this.$store.state.AMERICAN_EXPRESS">
-                American Express
-              </span>
-              <span v-else>
-                Tarjeta desconocida
-              </span>
-              {{ number }}
-              <br />
-              Ex.Date: {{ expiration_date }}
+
+            <b-col
+              id="text-column"
+              order="3"
+              order-md="2"
+              cols="12"
+              sm="4"
+              lg="5"
+            >
+              <div>
+                <span v-if="provider === this.$store.state.VISA">Visa</span>
+                <span v-else-if="provider === this.$store.state.MASTER_CARD"
+                  >Master Card</span
+                >
+                <span
+                  v-else-if="provider === this.$store.state.AMERICAN_EXPRESS"
+                  >American Express</span
+                >
+                <span v-else>Tarjeta desconocida</span>
+                {{ number }}
+              </div>
+
+              <div>
+                Ex.Date: {{ expiration_date }}
+
+                <br class="mobile-break" />
+
+                <span v-if="is_default" class="default-text">
+                  Default card
+                </span>
+              </div>
             </b-col>
-            <b-col order="4" order-md="3" xs="12">
+
+            <b-col
+              id="set-as-default"
+              order="4"
+              order-md="3"
+              cols="12"
+              sm="3"
+              lg="3"
+            >
               <b-button
                 variant="link"
                 @click.prevent="markAsDefault"
                 v-b-modal="'set-default-modal'"
+                v-if="!is_default"
+                class="set-default-text"
                 >Set as default</b-button
               >
             </b-col>
-            <b-col order="2" order-md="4" xs="5">
+            <b-col
+              id="remove-button"
+              order="2"
+              order-md="4"
+              cols="7"
+              sm="2"
+              lg="2"
+            >
               <b-button
                 variant="danger"
                 class="remove-card-button"
@@ -73,13 +118,30 @@ export default {
       type: String,
       default: "**** **** ****"
     },
-    expiration_date: {
-      type: Date,
-      default: null
+    exp_month: {
+      type: Number,
+      default: 0
+    },
+    exp_year: {
+      type: Number,
+      default: 0
     },
     is_default: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    expiration_date() {
+      let str = "" + this.exp_month;
+      let pad = "00";
+      let month = pad.substring(0, pad.length - str.length) + str;
+
+      str = "" + this.exp_year;
+      pad = "0000";
+      let year = pad.substring(0, pad.length - str.length) + str;
+
+      return month + "/" + year;
     }
   },
   methods: {

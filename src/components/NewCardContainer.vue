@@ -1,5 +1,5 @@
 <template>
-  <b-card align="left" class="mt-4">
+  <b-card align="left" class="mt-4 wrapper-father">
     <b-card-title @click="toggleForm">
       + Add New Card
     </b-card-title>

@@ -1,20 +1,20 @@
 <template>
-  <span>
-    <span v-if="provider === this.$store.state.VISA">
+  <div>
+    <template v-if="provider === this.$store.state.VISA">
       <img src="../assets/images/Visa Card Logo.svg" alt="Visa Logo" />
-    </span>
+    </template>
 
-    <span v-if="provider === this.$store.state.MASTER_CARD">
+    <template v-if="provider === this.$store.state.MASTER_CARD">
       <img src="../assets/images/Master Card Logo.svg" alt="Master Card Logo" />
-    </span>
+    </template>
 
-    <span v-if="provider === this.$store.state.AMERICAN_EXPRESS">
+    <template v-if="provider === this.$store.state.AMERICAN_EXPRESS">
       <img
         src="../assets/images/Amex Card logo.svg"
         alt="American Express Logo"
       />
-    </span>
-  </span>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -31,6 +31,12 @@ export default {
 
 <style scoped>
 img {
-  max-width: 150px;
+  width: 91px;
+}
+
+@media screen and (max-width: 599.95px) {
+  img {
+    width: 59px;
+  }
 }
 </style>
