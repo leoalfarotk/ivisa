@@ -1,10 +1,11 @@
 const path = require("path");
 
 module.exports = {
-    pluginOptions: {
-        "style-resources-loader": {
-            preProcessor: "scss",
-            patterns: [path.resolve(__dirname, "./src/styles/app.scss")]
-        }
+  pluginOptions: {
+    "style-resources-loader": {
+      preProcessor: "scss",
+      patterns: [path.resolve(__dirname, "./src/styles/app.scss")]
     }
+  },
+  publicPath: process.env.NODE_ENV === "production" ? "/ivisa/" : "/"
 };

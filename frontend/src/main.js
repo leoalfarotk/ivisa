@@ -8,7 +8,7 @@ import axios from "axios";
 Vue.use({
   install(Vue) {
     Vue.prototype.$axios = axios.create({
-      baseURL: "http://localhost:8000/api",
+      baseURL: process.env.VUE_APP_api_url,
       headers: {
         "X-Requested-With": "XMLHttpRequest"
       }
